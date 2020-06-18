@@ -1,0 +1,50 @@
+﻿<Window x:Class="DataGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGrid"
+        mc:Ignorable="d"
+        Title="AMONIC Airlines Automation System" Height="401.333" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="266" Width="497" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding name}">
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Last name" Binding="{Binding surname}">
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="User Role" Binding="{Binding tip}">
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Email Address" Binding="{Binding email}">
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="ID" Binding="{Binding id}">
+            </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell" >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding tip}" Value="Administrator">
+                            <Setter Property="Background" Value="Green"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding status}" Value="0">
+                            <Setter Property="Background" Value="Red"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="517">
+            <MenuItem Header="Add user">
+            </MenuItem>
+            <MenuItem Header="Exit" Click="MenuItem_Click">
+            </MenuItem>
+        </Menu>
+        <Label x:Name="label" Content="Office:" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" SelectedItem="All offices" HorizontalAlignment="Left" Margin="59,31,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem IsSelected="True">All offices</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="button" Content="Change Role" HorizontalAlignment="Left" Margin="10,336,0,0" VerticalAlignment="Top" Width="83"/>
+        <Button x:Name="button1" Content="Enable/Disable Role" HorizontalAlignment="Left" Margin="129,336,0,0" VerticalAlignment="Top" Width="122" Click="button1_Click"/>
+
+    </Grid>
+</Window>
